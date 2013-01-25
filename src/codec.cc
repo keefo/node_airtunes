@@ -110,6 +110,18 @@ Handle<Value> EncodeALAC(const Arguments& args) {
   int32_t alacSize = pcmSize;
   encoder->Encode(inputFormat, outputFormat, pcmData, alacData, &alacSize);
 
+  printf("PCM: ");
+  for(int i = 0; i < pcmSize; i++) {
+    printf("%x", pcmData[i]);
+  }
+  printf("\n");
+
+  printf("ALAC: ");
+  for(int i = 0; i < alacSize; i++) {
+    printf("%x", alacData[i]);
+  }
+  printf("\n");
+
   return scope.Close(Integer::New(alacSize));
 }
 
